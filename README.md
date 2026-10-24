@@ -8,11 +8,6 @@
 
 任务栏卡死、桌面图标不刷新、托盘点不动时，重启 explorer 通常即可恢复，不必注销或重启系统。
 
-### 脚本处理的两个坑
-
-1. explorer.exe 不在 System32。正确路径是 `%SystemRoot%\explorer.exe`。把重启命令写成 `System32\explorer.exe` 的结果是：shell 被杀掉之后新进程启动失败，桌面黑屏、任务栏消失。脚本在做任何改动之前先校验路径，路径不存在则直接退出，退出码 1。
-2. 重启 explorer 会打哑输入法候选框。候选框由 `TextInputHost.exe` 渲染，explorer 被结束后它变成僵尸进程：按键仍然上屏，候选框不再显示。脚本在末尾结束该进程，由系统按需重建。
-
 ### 运行
 
 双击 `restart-taskbar.bat`。
